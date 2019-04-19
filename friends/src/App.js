@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Friends from './components/Friends.js';
+import CreateFriendForm from './components/CreateFriendForm.js';
+import UpdateFriendForm from './components/UpdateFriendForm.js';
+
 import './App.css';
 
 class App extends Component {
@@ -7,6 +10,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1> Friends App </h1>
+        <Friends />
+        <CreateFriendForm />
+        <UpdateFriendForm />
       </div>
     );
   }
