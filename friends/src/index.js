@@ -5,14 +5,14 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import rootReducer from './reducers';
+import reducer from './reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 import './index.css';
 
 const store = createStore(
-  rootReducer, 
+  reducer, 
   applyMiddleware(thunk, logger)
 )
 
