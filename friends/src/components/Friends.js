@@ -1,27 +1,31 @@
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
-import { getFriends } from '../actions';
+import { connect } from 'react-redux'
+import { getFriends } from '../actions'
 
-class FriendsListView extends React.Component {
+import Friend from './Friend'
 
-  componentDidCatch() {
-    this.props.getFriends()
-  }
-
-  render() {
-    if(this.props.fetchingFriends) {
-      return(
-        <h4> ... Still Loading </h4>
-      )
+class Friends extends React.Component {
+    
+    componentDidCatch() {
+        this.props.getFriends()
     }
-  }
+
+    render() {
+        return(
+          <div>
+            {this.props.friends.map(friend => <Friend friend={friend} key={friend.id}/>)}
+          </div>
+        )      
+    }
 }
 
 function mstp(state) {
-  return {
-    fetchingFriends: state.reducer.fetchingFriends
-  }
+    return{
+      fetchingFriends: state.fetchingFriends,
+      friends: state.friends,
+      error: state.error
+    }
 }
 
-export default connect(mstp, {getFriends})(FriendsListView)
+export default connect(mstp, {getFriends})(Friends)
